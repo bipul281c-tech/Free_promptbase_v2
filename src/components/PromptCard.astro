@@ -1,0 +1,146 @@
+---
+interface Props {
+    type: string;
+    time: string;
+    title: string;
+    description: string;
+    prompt: string;
+    author: string;
+    views: string;
+    copies: string;
+    color: string;
+    slug?: string;
+}
+
+const {
+    type,
+    time,
+    title,
+    description,
+    prompt,
+    author,
+    views,
+    copies,
+    color,
+    slug,
+} = Astro.props;
+
+const colorClasses: Record<
+    string,
+    { bg: string; text: string; border: string; hover: string; icon: string }
+> = {
+    purple: {
+        bg: "bg-purple-500/10",
+        text: "text-purple-400",
+        border: "border-purple-500/20",
+        hover: "group-hover:text-purple-300",
+        icon: "bg-purple-900 border-purple-800",
+    },
+    green: {
+        bg: "bg-green-500/10",
+        text: "text-green-400",
+        border: "border-green-500/20",
+        hover: "group-hover:text-green-300",
+        icon: "bg-green-900 border-green-800",
+    },
+    blue: {
+        bg: "bg-blue-500/10",
+        text: "text-blue-400",
+        border: "border-blue-500/20",
+        hover: "group-hover:text-blue-300",
+        icon: "bg-blue-900 border-blue-800",
+    },
+    orange: {
+        bg: "bg-orange-500/10",
+        text: "text-orange-400",
+        border: "border-orange-500/20",
+        hover: "group-hover:text-orange-300",
+        icon: "bg-orange-900 border-orange-800",
+    },
+    indigo: {
+        bg: "bg-indigo-500/10",
+        text: "text-indigo-400",
+        border: "border-indigo-500/20",
+        hover: "group-hover:text-indigo-300",
+        icon: "bg-indigo-900 border-indigo-800",
+    },
+};
+
+const currentColor = colorClasses[color] || colorClasses.purple;
+---
+
+<article
+    class="group relative flex flex-col justify-between bg-surface/30 border border-border rounded-xl p-5 hover:border-neutral-600 hover:bg-surface/50 active:bg-surface/60 transition-all duration-300 hover:shadow-lg hover:shadow-neutral-900/50 cursor-pointer"
+    onclick={`window.location.href='${slug ? `/blog/${slug}` : "#"}'`}
+>
+    <div>
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+                <span
+                    class={`text-[10px] font-medium px-2 py-0.5 rounded border ${currentColor.text} ${currentColor.border} ${currentColor.bg}`}
+                >
+                    {type}
+                </span>
+                <span class="text-[10px] text-neutral-500">{time}</span>
+            </div>
+            <button
+                class="text-neutral-500 hover:text-white transition-colors z-20 p-2 -m-2"
+                onclick="event.stopPropagation()"
+                aria-label="Bookmark prompt"
+            >
+                <iconify-icon icon="lucide:bookmark" width="16"></iconify-icon>
+            </button>
+        </div>
+        <h2
+            class={`text-base font-medium text-white tracking-tight mb-2 ${currentColor.hover} transition-colors`}
+        >
+            {title}
+        </h2>
+        <p class="text-xs text-secondary leading-relaxed mb-4 line-clamp-2">
+            {description}
+        </p>
+
+        <div
+            class="relative bg-black/50 rounded-lg p-3 border border-border group-hover:border-neutral-700 transition-colors mb-4"
+        >
+            <code
+                class="text-[10px] font-mono text-neutral-400 block line-clamp-3"
+            >
+                {prompt}
+            </code>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"
+            >
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="flex items-center justify-between mt-auto pt-4 border-t border-border/50"
+    >
+        <div class="flex items-center gap-2">
+            <div
+                class={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] text-white border border-opacity-50 ${currentColor.icon}`}
+            >
+                {author.charAt(0)}
+            </div>
+            <span class="text-xs text-neutral-400">{author}</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="flex items-center gap-1 text-neutral-500 text-[10px]">
+                <iconify-icon icon="lucide:eye" width="12"></iconify-icon>
+                {
+                    parseInt(views) >= 1000
+                        ? `${(parseInt(views) / 1000).toFixed(1)}k`
+                        : views
+                }
+            </div>
+            <div
+                class="flex items-center gap-1 text-neutral-500 text-[10px] group-hover:text-white transition-colors"
+            >
+                Read Post <iconify-icon icon="lucide:arrow-right" width="10"
+                ></iconify-icon>
+            </div>
+        </div>
+    </div>
+</article>

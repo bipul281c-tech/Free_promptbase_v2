@@ -1,0 +1,99 @@
+---
+
+---
+
+<dialog
+    id="submit-modal"
+    class="bg-transparent p-0 backdrop:bg-black/50 backdrop:backdrop-blur-sm w-full h-full max-w-full max-h-full m-0 open:flex items-center justify-center z-50"
+>
+    <div
+        class="bg-surface border border-border rounded-xl p-6 w-full max-w-md shadow-2xl relative"
+    >
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-lg font-semibold text-white">Submit a Prompt</h3>
+            <button
+                id="close-modal"
+                class="text-neutral-400 hover:text-white transition-colors"
+            >
+                <iconify-icon icon="lucide:x" width="20"></iconify-icon>
+            </button>
+        </div>
+
+        <form class="space-y-4">
+            <div>
+                <label
+                    for="title"
+                    class="block text-xs font-medium text-neutral-400 mb-1"
+                    >Title</label
+                >
+                <input
+                    type="text"
+                    id="title"
+                    class="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neutral-500 transition-colors"
+                    placeholder="e.g. SEO Blog Post Generator"
+                />
+            </div>
+            <div>
+                <label
+                    for="prompt"
+                    class="block text-xs font-medium text-neutral-400 mb-1"
+                    >Prompt</label
+                >
+                <textarea
+                    id="prompt"
+                    rows="4"
+                    class="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neutral-500 transition-colors resize-none"
+                    placeholder="Paste your prompt here..."></textarea>
+            </div>
+            <div>
+                <label
+                    for="category"
+                    class="block text-xs font-medium text-neutral-400 mb-1"
+                    >Category</label
+                >
+                <select
+                    id="category"
+                    class="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neutral-500 transition-colors appearance-none"
+                >
+                    <option>Writing</option>
+                    <option>Coding</option>
+                    <option>Image Gen</option>
+                    <option>Productivity</option>
+                    <option>Marketing</option>
+                </select>
+            </div>
+
+            <button
+                type="submit"
+                class="w-full bg-white text-black font-medium py-2 rounded-lg hover:bg-neutral-200 transition-colors mt-2"
+            >
+                Submit Prompt
+            </button>
+        </form>
+    </div>
+</dialog>
+
+<script>
+    const modal = document.getElementById("submit-modal") as HTMLDialogElement;
+    const closeBtn = document.getElementById("close-modal");
+    // Note: Open logic will be handled by a button in Navbar or elsewhere
+
+    if (closeBtn && modal) {
+        closeBtn.addEventListener("click", () => {
+            modal.close();
+        });
+
+        // Close on click outside
+        modal.addEventListener("click", (e) => {
+            const dialogDimensions = modal.getBoundingClientRect();
+            if (
+                e.clientX < dialogDimensions.left ||
+                e.clientX > dialogDimensions.right ||
+                e.clientY < dialogDimensions.top ||
+                e.clientY > dialogDimensions.bottom
+            ) {
+                modal.close();
+            }
+        });
+    }
+</script>

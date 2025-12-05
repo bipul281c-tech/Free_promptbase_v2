@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --color-background: #0a0a0a;
+    --color-surface: #171717;
+    --color-border: #262626;
+    --color-primary: #ededed;
+    --color-secondary: #a1a1aa;
+}
+
+html {
+    font-size: 16px;
+    /* Ensure base font size is readable */
+    -webkit-tap-highlight-color: transparent;
+    /* Remove tap highlight on mobile */
+}
+
+@media (min-width: 1024px) {
+    html {
+        scrollbar-gutter: stable;
+    }
+}
+
+/* Ensure minimum touch target size for interactive elements */
+button,
+a {
+    touch-action: manipulation;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #444;
+}
+
+/* Markdown Content Styles */
+.markdown-content h1 {
+    @apply text-3xl font-bold text-white mt-12 mb-6;
+}
+
+.markdown-content h2 {
+    @apply text-2xl font-semibold text-white mt-10 mb-5 pb-2 border-b border-neutral-800;
+}
+
+.markdown-content h3 {
+    @apply text-xl font-medium text-white mt-8 mb-4;
+}
+
+.markdown-content h4 {
+    @apply text-lg font-medium text-white mt-6 mb-3;
+}
+
+.markdown-content p {
+    @apply text-neutral-300 leading-7 mb-5;
+}
+
+.markdown-content strong {
+    @apply text-white font-semibold;
+}
+
+.markdown-content em {
+    @apply text-neutral-200 italic;
+}
+
+.markdown-content blockquote {
+    @apply border-l-4 border-emerald-500 pl-4 my-6 italic text-neutral-400 bg-surface/30 py-3 pr-3 rounded-r-lg;
+}
+
+.markdown-content ul {
+    @apply list-disc pl-6 space-y-2 mb-6 text-neutral-300;
+}
+
+.markdown-content ol {
+    @apply list-decimal pl-6 space-y-2 mb-6 text-neutral-300;
+}
+
+.markdown-content li {
+    @apply pl-1;
+}
+
+.markdown-content a {
+    @apply text-emerald-400 hover:text-emerald-300 underline underline-offset-4 transition-colors font-medium;
+}
+
+.markdown-content img {
+    @apply rounded-xl border border-neutral-800 w-full shadow-lg my-8;
+}
+
+.markdown-content code {
+    @apply bg-neutral-800 text-emerald-300 px-1.5 py-0.5 rounded text-sm font-mono border border-neutral-700;
+}
+
+.markdown-content pre {
+    @apply p-4 overflow-x-auto text-sm font-mono text-neutral-300 bg-[#111] border border-neutral-800 rounded-lg my-6;
+}
+
+.markdown-content pre code {
+    @apply bg-transparent text-inherit p-0 border-none;
+}
