@@ -1,0 +1,313 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	model = "AI Model",
+	author = "Admin",
+	views = 0,
+	tags = [],
+	tips = [],
+	prompt,
+} = Astro.props;
+
+// Helper to get color based on model (simplified mapping)
+const getModelColor = (model: string) => {
+	const colors: Record<string, string> = {
+		"GPT-4": "text-green-400 border-green-500/30 bg-green-500/10",
+		"Claude 3": "text-indigo-400 border-indigo-500/30 bg-indigo-500/10",
+		Midjourney: "text-purple-400 border-purple-500/30 bg-purple-500/10",
+		"Stable Diffusion":
+			"text-orange-400 border-orange-500/30 bg-orange-500/10",
+	};
+	return (
+		colors[model] ||
+		"text-neutral-400 border-neutral-500/30 bg-neutral-500/10"
+	);
+};
+
+const modelColorClass = getModelColor(model);
+const modelColorBg =
+	modelColorClass
+		.split(" ")
+		.find((c) => c.startsWith("bg-"))
+		?.replace("bg-", "bg-") || "bg-neutral-500";
+
+const schema = JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	headline: title,
+	description: description,
+	image: heroImage
+		? new URL(heroImage.src, Astro.site).toString()
+		: undefined,
+	datePublished: pubDate.toISOString(),
+	dateModified: updatedDate ? updatedDate.toISOString() : undefined,
+	author: {
+		"@type": "Person",
+		name: author,
+	},
+});
+---
+
+<BaseLayout title={title} description={description} image={heroImage}>
+	<script type="application/ld+json" set:html={schema} slot="head" />
+
+	<!-- Reading Progress Bar -->
+	<div
+		id="progress-bar"
+		class="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-500 to-sky-500 z-50 w-0 transition-all duration-100"
+	>
+	</div>
+
+	<div
+		class="animate-in fade-in slide-in-from-bottom-4 duration-300 bg-background min-h-screen"
+	>
+		<div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+			<!-- Nav Back -->
+			<a
+				href="/blog"
+				class="group flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-white mb-10 transition-colors inline-flex"
+			>
+				<iconify-icon
+					icon="lucide:arrow-left"
+					width="16"
+					class="group-hover:-translate-x-1 transition-transform"
+				></iconify-icon>
+				Back to Blogs
+			</a>
+
+			<!-- Article Header -->
+			<header class="mb-10 text-center">
+				<div class="flex items-center justify-center gap-3 mb-6">
+					<span
+						class={`text-xs font-medium px-3 py-1 rounded-full border ${modelColorClass}`}
+					>
+						{model}
+					</span>
+					<span
+						class="flex items-center gap-1.5 text-xs text-neutral-500"
+					>
+						<iconify-icon icon="lucide:calendar" width="12"
+						></iconify-icon>
+						<FormattedDate date={pubDate} />
+					</span>
+				</div>
+
+				<h1
+					class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6 leading-tight"
+				>
+					{title}
+				</h1>
+
+				<div
+					class="flex items-center justify-center gap-4 text-sm text-neutral-400"
+				>
+					<div class="flex items-center gap-2">
+						<div
+							class={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white border border-white/10 ${modelColorBg.replace("/10", "")}`}
+						>
+							{author.charAt(0)}
+						</div>
+						<span class="text-white font-medium">{author}</span>
+					</div>
+					<span>•</span>
+					<div class="flex items-center gap-1.5">
+						<iconify-icon icon="lucide:eye" width="14"
+						></iconify-icon>
+						{
+							views >= 1000
+								? `${(views / 1000).toFixed(1)}k`
+								: views
+						} reads
+					</div>
+				</div>
+			</header>
+
+			<!-- Main Article Content -->
+			<article class="prose prose-invert prose-lg max-w-none">
+				<!-- Intro / Description -->
+				<p
+					class="text-lg text-neutral-300 leading-relaxed mb-8 font-light"
+				>
+					{description}
+				</p>
+
+				{
+					heroImage && (
+						<div class="mb-10 rounded-xl overflow-hidden border border-border shadow-lg">
+							<Image
+								width={1020}
+								height={510}
+								src={heroImage}
+								alt={title}
+								class="w-full h-auto"
+							/>
+						</div>
+					)
+				}
+
+				{
+					prompt && (
+						<div class="my-10 p-6 bg-surface/30 border border-border rounded-xl not-prose">
+							<h3 class="text-base font-medium text-white mb-4 flex items-center gap-2">
+								<iconify-icon
+									icon="lucide:zap"
+									width="16"
+									class="text-yellow-400"
+								/>
+								The Prompt
+							</h3>
+							<div class="relative group">
+								<div class="absolute -inset-0.5 bg-gradient-to-r from-neutral-700 to-neutral-800 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500" />
+								<div class="relative bg-[#0F0F0F] border border-neutral-800 rounded-lg p-5 overflow-hidden">
+									<code
+										id="prompt-code"
+										class="text-sm font-mono text-emerald-300 leading-relaxed whitespace-pre-wrap break-words block"
+									>
+										{prompt}
+									</code>
+									<button
+										id="copy-btn"
+										class="absolute top-3 right-3 text-xs flex items-center gap-1.5 text-neutral-500 hover:text-white transition-colors bg-surface/80 backdrop-blur border border-border px-2.5 py-1.5 rounded-md cursor-pointer"
+									>
+										<iconify-icon
+											id="copy-icon"
+											icon="lucide:copy"
+											width="12"
+										/>
+										<iconify-icon
+											id="check-icon"
+											icon="lucide:check"
+											width="12"
+											class="text-emerald-500 hidden"
+										/>
+										<span id="copy-text">Copy</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					)
+				}
+
+				<!-- Markdown Body Rendering -->
+				<div class="markdown-content">
+					<slot />
+				</div>
+
+				<!-- Optimization Tips & Tags -->
+				<!-- Optimization Tips -->
+				{
+					tips && tips.length > 0 && (
+						<div class="mt-12 not-prose">
+							<h3 class="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+								<iconify-icon
+									icon="lucide:tag"
+									width="20"
+									class="text-emerald-400"
+								/>
+								Optimization Tips
+							</h3>
+							<div class="grid gap-4">
+								{tips.map((tip, index) => (
+									<div class="flex gap-4 p-4 rounded-lg bg-surface/50 border border-border/50 hover:border-neutral-600 transition-colors">
+										<div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center text-xs font-bold text-neutral-400 shrink-0 mt-0.5">
+											{index + 1}
+										</div>
+										<p class="text-neutral-300 text-base leading-relaxed">
+											{tip}
+										</p>
+									</div>
+								))}
+							</div>
+						</div>
+					)
+				}
+
+				<hr class="border-border my-12" />
+
+				<!-- Footer Actions -->
+				<div
+					class="flex flex-col sm:flex-row items-center justify-between gap-6 not-prose"
+				>
+					<div class="flex items-center gap-2">
+						{
+							tags.map((tag) => (
+								<span class="text-xs font-medium px-3 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white transition-colors cursor-pointer">
+									#{tag}
+								</span>
+							))
+						}
+					</div>
+					<div class="flex items-center gap-3">
+						<button
+							class="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all text-sm font-medium border border-border"
+						>
+							<iconify-icon icon="lucide:thumbs-up" width="16"
+							></iconify-icon> Like
+						</button>
+						<button
+							class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-black hover:bg-neutral-200 transition-all text-sm font-medium"
+						>
+							<iconify-icon icon="lucide:share-2" width="16"
+							></iconify-icon> Share
+						</button>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+
+	<script>
+		// Reading Progress Bar
+		const progressBar = document.getElementById("progress-bar");
+
+		window.addEventListener("scroll", () => {
+			if (progressBar) {
+				const winScroll =
+					document.body.scrollTop ||
+					document.documentElement.scrollTop;
+				const height =
+					document.documentElement.scrollHeight -
+					document.documentElement.clientHeight;
+				const scrolled = (winScroll / height) * 100;
+				progressBar.style.width = scrolled + "%";
+			}
+		});
+
+		// Copy to Clipboard
+		const copyBtn = document.getElementById("copy-btn");
+		const promptCode = document.getElementById("prompt-code");
+		const copyIcon = document.getElementById("copy-icon");
+		const checkIcon = document.getElementById("check-icon");
+		const copyText = document.getElementById("copy-text");
+
+		if (copyBtn && promptCode) {
+			copyBtn.addEventListener("click", () => {
+				const textToCopy = promptCode.innerText;
+				navigator.clipboard.writeText(textToCopy).then(() => {
+					// Show copied state
+					if (copyIcon) copyIcon.classList.add("hidden");
+					if (checkIcon) checkIcon.classList.remove("hidden");
+					if (copyText) copyText.innerText = "Copied";
+
+					// Reset after 2 seconds
+					setTimeout(() => {
+						if (copyIcon) copyIcon.classList.remove("hidden");
+						if (checkIcon) checkIcon.classList.add("hidden");
+						if (copyText) copyText.innerText = "Copy";
+					}, 2000);
+				});
+			});
+		}
+	</script>
+</BaseLayout>

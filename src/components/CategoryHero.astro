@@ -1,0 +1,71 @@
+---
+import type { CategoryDefinition } from "../categories";
+
+interface Props {
+    category: CategoryDefinition;
+    postCount: number;
+}
+
+const { category, postCount } = Astro.props;
+
+// Color mapping for category accent colors
+const colorClasses: Record<string, string> = {
+    purple: "from-purple-500 to-purple-600",
+    blue: "from-blue-500 to-blue-600",
+    pink: "from-pink-500 to-pink-600",
+    yellow: "from-yellow-500 to-yellow-600",
+    green: "from-emerald-500 to-emerald-600",
+    indigo: "from-indigo-500 to-indigo-600",
+    orange: "from-orange-500 to-orange-600",
+    red: "from-red-500 to-red-600",
+};
+
+const glowColor: Record<string, string> = {
+    purple: "bg-purple-500/20",
+    blue: "bg-blue-500/20",
+    pink: "bg-pink-500/20",
+    yellow: "bg-yellow-500/20",
+    green: "bg-emerald-500/20",
+    indigo: "bg-indigo-500/20",
+    orange: "bg-orange-500/20",
+    red: "bg-red-500/20",
+};
+
+const accentGradient = colorClasses[category.color] || colorClasses.purple;
+const glowBg = glowColor[category.color] || glowColor.purple;
+---
+
+<section
+    class="relative pt-16 pb-10 md:pt-20 md:pb-12 px-4 border-b border-border overflow-hidden w-full"
+>
+    <!-- Background Glow -->
+    <div
+        class={`absolute top-0 left-1/2 -translate-x-1/2 w-[500px] md:w-[700px] h-[250px] md:h-[350px] ${glowBg} blur-[80px] md:blur-[100px] rounded-full pointer-events-none -z-10`}
+    >
+    </div>
+
+    <div class="max-w-3xl mx-auto text-center">
+        <!-- Category Badge -->
+        <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-surface/50 text-xs font-medium text-secondary mb-5"
+        >
+            <iconify-icon icon={`lucide:${category.icon}`} width="14"
+            ></iconify-icon>
+            {postCount} prompt{postCount !== 1 ? "s" : ""} available
+        </div>
+
+        <!-- Category Name -->
+        <h1
+            class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60"
+        >
+            {category.name} Prompts
+        </h1>
+
+        <!-- Category Description -->
+        <p
+            class="text-sm text-secondary max-w-lg mx-auto leading-relaxed font-light px-4 md:px-0"
+        >
+            {category.description}
+        </p>
+    </div>
+</section>

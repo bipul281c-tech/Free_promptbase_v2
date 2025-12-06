@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogContainer from "../../components/BlogContainer";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<section class="py-12 px-4 sm:px-6 max-w-7xl mx-auto w-full">
+		<h1 class="text-3xl font-bold text-white mb-8">Blog</h1>
+		<BlogContainer client:load initialPosts={posts} />
+	</section>
+</BaseLayout>

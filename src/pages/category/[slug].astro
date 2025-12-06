@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PromptGrid from "../../components/PromptGrid.astro";
+import Filters from "../../components/Filters.astro";
+import CategoryHero from "../../components/CategoryHero.astro";
+import { CATEGORIES, getCategoryBySlug } from "../../categories";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async () => {
+    const posts = await getCollection("blog");
+
+    return CATEGORIES.map((category) => {
+        const categoryPosts = posts.filter(
+            (post) => post.data.category === category.slug,
+        );
+
+        return {
+            params: { slug: category.slug },
+            props: {
+                category: category,
+                postCount: categoryPosts.length,
+            },
+        };
+    });
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+const { category, postCount } = Astro.props;
+
+const categoryInfo = getCategoryBySlug(slug);
+
+if (!categoryInfo) {
+    return Astro.redirect("/404");
+}
+
+const pageTitle = `${category.name} Prompts`;
+const pageDescription = `${category.description} - Browse ${postCount} ${category.name.toLowerCase()} prompts`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+    <CategoryHero category={category} postCount={postCount} />
+    <Filters />
+    <PromptGrid category={slug} />
+</BaseLayout>

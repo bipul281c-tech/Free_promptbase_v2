@@ -1,0 +1,96 @@
+---
+import PromptCard from "./PromptCard.astro";
+import { getCollection } from "astro:content";
+import { getCategoryBySlug } from "../categories";
+
+interface Props {
+    category?: string;
+}
+
+const { category } = Astro.props;
+
+let posts = await getCollection("blog");
+
+// Filter by category if specified
+if (category) {
+    posts = posts.filter((post) => post.data.category === category);
+}
+
+// Sort posts by publication date
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Helper to format time ago (simplified)
+function timeAgo(date: Date) {
+    const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+    let interval = seconds / 31536000;
+    if (interval > 1) return Math.floor(interval) + "y ago";
+    interval = seconds / 2592000;
+    if (interval > 1) return Math.floor(interval) + "mo ago";
+    interval = seconds / 86400;
+    if (interval > 1) return Math.floor(interval) + "d ago";
+    interval = seconds / 3600;
+    if (interval > 1) return Math.floor(interval) + "h ago";
+    interval = seconds / 60;
+    if (interval > 1) return Math.floor(interval) + "m ago";
+    return Math.floor(seconds) + "s ago";
+}
+
+const prompts = posts.map((post) => ({
+    type: "Blog Post", // Default type
+    time: timeAgo(post.data.pubDate),
+    title: post.data.title,
+    description: post.data.description,
+    prompt: post.data.prompt || "No prompt available",
+    author: "Admin", // Default author
+    views: Math.floor(Math.random() * 10000).toString(), // Random views for demo
+    copies: Math.floor(Math.random() * 1000).toString(), // Random copies for demo
+    color: "purple", // Default color
+    slug: post.id,
+    category: post.data.category,
+}));
+
+const categoryInfo = category ? getCategoryBySlug(category) : null;
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    {
+        categoryInfo && (
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-white mb-2">
+                    {categoryInfo.name}
+                </h1>
+                <p class="text-secondary text-sm mb-1">
+                    {categoryInfo.description}
+                </p>
+                <p class="text-neutral-500 text-xs">
+                    {prompts.length} prompt{prompts.length !== 1 ? "s" : ""}{" "}
+                    available
+                </p>
+            </div>
+        )
+    }
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {prompts.map((prompt) => <PromptCard {...prompt} />)}
+    </div>
+
+    {
+        prompts.length === 0 && (
+            <div class="text-center py-12">
+                <p class="text-secondary text-sm">
+                    No prompts found in this category yet.
+                </p>
+            </div>
+        )
+    }
+
+    {
+        prompts.length > 0 && (
+            <div class="mt-12 text-center">
+                <button class="text-xs font-medium text-secondary hover:text-white border border-border hover:border-neutral-600 bg-surface px-6 py-2.5 rounded-md transition-all">
+                    Load more prompts
+                </button>
+            </div>
+        )
+    }
+</section>

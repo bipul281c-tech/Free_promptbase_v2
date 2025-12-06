@@ -1,0 +1,57 @@
+---
+import { CATEGORIES } from "../categories";
+
+// Get current URL to determine active category
+const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === "/";
+const categoryMatch = currentPath.match(/^\/category\/([^/]+)/);
+const activeCategory = categoryMatch ? categoryMatch[1] : null;
+---
+
+<section
+    class="sticky top-14 z-40 bg-background/95 backdrop-blur-xl border-b border-border"
+>
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 h-12 flex items-center overflow-x-auto no-scrollbar gap-2"
+    >
+        <a
+            href="/"
+            class={`whitespace-nowrap px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                isHomePage && !activeCategory
+                    ? "bg-surface border border-neutral-700 text-white shadow-sm"
+                    : "text-secondary hover:text-white hover:bg-surface"
+            }`}
+        >
+            All Prompts
+        </a>
+        {
+            CATEGORIES.map((category) => (
+                <a
+                    href={`/category/${category.slug}`}
+                    class={`whitespace-nowrap px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                        activeCategory === category.slug
+                            ? "bg-surface border border-neutral-700 text-white shadow-sm"
+                            : "text-secondary hover:text-white hover:bg-surface"
+                    }`}
+                >
+                    {category.name}
+                </a>
+            ))
+        }
+        <div
+            class="ml-auto flex items-center gap-2 pl-4 border-l border-border hidden sm:flex"
+        >
+            <span
+                class="text-[10px] text-neutral-500 uppercase tracking-widest font-medium"
+                >Sort by:</span
+            >
+            <button
+                id="sort-dropdown"
+                class="text-xs text-white flex items-center gap-1 hover:text-neutral-300"
+            >
+                Popular <iconify-icon icon="lucide:chevron-down" width="12"
+                ></iconify-icon>
+            </button>
+        </div>
+    </div>
+</section>

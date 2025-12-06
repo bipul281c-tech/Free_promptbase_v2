@@ -1,0 +1,236 @@
+---
+import { SITE_TITLE } from "../consts";
+---
+
+<nav
+    class="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md"
+>
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between"
+    >
+        <div class="flex items-center gap-4 md:gap-8">
+            <!-- Mobile Menu Button -->
+            <button
+                id="mobile-menu-btn"
+                class="md:hidden text-white p-1 -ml-1 hover:bg-surface rounded-md transition-colors"
+                aria-label="Toggle menu"
+            >
+                <iconify-icon icon="lucide:menu" width="24" height="24"
+                ></iconify-icon>
+            </button>
+
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-2 group">
+                <div
+                    class="w-6 h-6 bg-white rounded-md flex items-center justify-center text-black"
+                >
+                    <iconify-icon
+                        icon="lucide:sparkles"
+                        width="14"
+                        height="14"
+                        stroke-width="2"></iconify-icon>
+                </div>
+                <span
+                    class="text-sm font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors"
+                    >{SITE_TITLE}</span
+                >
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-6">
+                <a
+                    href="/"
+                    class="text-xs font-medium text-secondary hover:text-white transition-colors"
+                    >Home</a
+                >
+                <a
+                    href="/categories"
+                    class="text-xs font-medium text-secondary hover:text-white transition-colors"
+                    >Categories</a
+                >
+                <a
+                    href="/blog"
+                    class="text-xs font-medium text-secondary hover:text-white transition-colors"
+                    >Blog</a
+                >
+                <a
+                    href="/about"
+                    class="text-xs font-medium text-secondary hover:text-white transition-colors"
+                    >About</a
+                >
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            <div
+                class="hidden md:flex items-center px-2 py-1.5 rounded-md border border-border bg-surface w-64 text-secondary focus-within:border-emerald-500/50 focus-within:ring-1 focus-within:ring-emerald-500/50 transition-all"
+            >
+                <iconify-icon
+                    icon="lucide:search"
+                    width="14"
+                    class="mr-2 text-neutral-500"></iconify-icon>
+                <input
+                    type="text"
+                    placeholder="Search prompts..."
+                    class="bg-transparent border-none outline-none text-xs w-full placeholder-neutral-600 text-white"
+                />
+                <span
+                    class="text-[10px] text-neutral-600 border border-neutral-700 px-1 rounded ml-1 font-mono"
+                    >/</span
+                >
+            </div>
+            <!-- Mobile Search Icon -->
+            <button
+                class="md:hidden text-secondary hover:text-white p-2"
+                aria-label="Search"
+            >
+                <iconify-icon icon="lucide:search" width="20"></iconify-icon>
+            </button>
+
+            <!-- Theme Toggle Button -->
+            <button
+                id="theme-toggle"
+                class="relative w-9 h-9 rounded-md border border-border bg-surface hover:bg-neutral-700 transition-all duration-300 flex items-center justify-center overflow-hidden"
+                aria-label="Toggle theme"
+            >
+                <iconify-icon
+                    id="sun-icon"
+                    icon="lucide:sun"
+                    width="18"
+                    class="absolute text-yellow-400 transition-all duration-300"
+                ></iconify-icon>
+                <iconify-icon
+                    id="moon-icon"
+                    icon="lucide:moon"
+                    width="18"
+                    class="absolute text-blue-300 transition-all duration-300"
+                ></iconify-icon>
+            </button>
+
+            <button
+                class="text-xs font-semibold bg-emerald-500 text-white px-3 py-1.5 rounded-md hover:bg-emerald-400 transition-colors flex items-center gap-2 ring-1 ring-emerald-400/20 shadow-lg shadow-emerald-500/20"
+            >
+                <iconify-icon icon="lucide:plus" width="14"></iconify-icon>
+                <span class="hidden sm:inline">Submit Prompt</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+        id="mobile-menu"
+        class="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl transform transition-transform duration-300 -translate-x-full md:hidden"
+        style="top: 56px; height: calc(100vh - 56px);"
+    >
+        <div class="p-4 space-y-4">
+            <div class="space-y-1">
+                <a
+                    href="/"
+                    class="block px-4 py-3 text-sm font-medium text-white hover:bg-surface rounded-lg transition-colors"
+                >
+                    Home
+                </a>
+                <a
+                    href="/categories"
+                    class="block px-4 py-3 text-sm font-medium text-white hover:bg-surface rounded-lg transition-colors"
+                >
+                    Categories
+                </a>
+                <a
+                    href="/blog"
+                    class="block px-4 py-3 text-sm font-medium text-white hover:bg-surface rounded-lg transition-colors"
+                >
+                    Blog
+                </a>
+                <a
+                    href="/about"
+                    class="block px-4 py-3 text-sm font-medium text-white hover:bg-surface rounded-lg transition-colors"
+                >
+                    About
+                </a>
+            </div>
+
+            <div class="pt-4 border-t border-border">
+                <div
+                    class="flex items-center px-3 py-2 rounded-md border border-border bg-surface text-secondary focus-within:border-neutral-600 transition-all"
+                >
+                    <iconify-icon
+                        icon="lucide:search"
+                        width="16"
+                        class="mr-2 text-neutral-500"></iconify-icon>
+                    <input
+                        type="text"
+                        placeholder="Search prompts..."
+                        class="bg-transparent border-none outline-none text-sm w-full placeholder-neutral-600 text-white"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    let isMenuOpen = false;
+
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove("-translate-x-full");
+                const icon = menuBtn.querySelector("iconify-icon");
+                if (icon) icon.setAttribute("icon", "lucide:x");
+                document.body.style.overflow = "hidden";
+            } else {
+                mobileMenu.classList.add("-translate-x-full");
+                const icon = menuBtn.querySelector("iconify-icon");
+                if (icon) icon.setAttribute("icon", "lucide:menu");
+                document.body.style.overflow = "";
+            }
+        });
+    }
+
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById("theme-toggle");
+    const sunIcon = document.getElementById("sun-icon");
+    const moonIcon = document.getElementById("moon-icon");
+
+    function updateIcons(theme) {
+        if (theme === "dark") {
+            sunIcon?.setAttribute(
+                "style",
+                "transform: rotate(180deg) scale(0); opacity: 0;",
+            );
+            moonIcon?.setAttribute(
+                "style",
+                "transform: rotate(0deg) scale(1); opacity: 1;",
+            );
+        } else {
+            sunIcon?.setAttribute(
+                "style",
+                "transform: rotate(0deg) scale(1); opacity: 1;",
+            );
+            moonIcon?.setAttribute(
+                "style",
+                "transform: rotate(-180deg) scale(0); opacity: 0;",
+            );
+        }
+    }
+
+    function toggleTheme() {
+        const currentTheme =
+            document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateIcons(newTheme);
+    }
+
+    // Initialize icons based on current theme
+    const currentTheme =
+        document.documentElement.getAttribute("data-theme") || "dark";
+    updateIcons(currentTheme);
+
+    themeToggle?.addEventListener("click", toggleTheme);
+</script>

@@ -1,0 +1,40 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import BlogPost from "../../../layouts/BlogPost.astro";
+import { CATEGORIES, getCategoryBySlug } from "../../../categories";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async () => {
+    const posts = await getCollection("blog");
+
+    return posts.map((post) => ({
+        params: {
+            category: post.data.category,
+            slug: post.id,
+        },
+        props: post,
+    }));
+}) satisfies GetStaticPaths;
+
+type Props = CollectionEntry<"blog">;
+
+const { category, slug } = Astro.params;
+const post = Astro.props;
+
+// Validate that the category exists
+const categoryInfo = getCategoryBySlug(category);
+if (!categoryInfo) {
+    return Astro.redirect("/404");
+}
+
+// Validate that the post belongs to the requested category
+if (post.data.category !== category) {
+    return Astro.redirect("/404");
+}
+
+const { Content } = await render(post);
+---
+
+<BlogPost {...post.data}>
+    <Content />
+</BlogPost>
