@@ -5,7 +5,7 @@ pubDate: 'Dec 17 2025'
 category: 'image-generation'
 heroImage: 'https://pub-141831e61e69445289222976a15b6fb3.r2.dev/insta_post/DPWY8BykvTb/image_1.webp'
 username: 'designbyritika_'
-tags: [[CharGPT prompts, CharGPT prompts for creatives, prompts for designers, creative prompts, design workflow, image-generation prompts, AI prompts for visuals, captions prompts, alt text prompts, mood boards prompts, design system prompts, Figma prompts]]
+tags: [CharGPT prompts, CharGPT prompts for creatives, prompts for designers, creative prompts, design workflow, image-generation prompts, AI prompts for visuals, captions prompts, alt text prompts, mood boards prompts, design system prompts, Figma prompts]
 faq:
   - question: "What is a CharGPT prompt for designers?"
     answer: "A designed prompt that directs ChatGPT to deliver design concepts, captions, mood boards, and system notes tailored for designers."
