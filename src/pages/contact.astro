@@ -1,0 +1,313 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<BaseLayout
+    title="Contact Us - FreePromptBase"
+    description="Get in touch with the FreePromptBase team. We'd love to hear from you!"
+>
+    <div class="min-h-[calc(100vh-200px)] px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+                <div
+                    class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm"
+                >
+                    <iconify-icon icon="lucide:message-circle" width="16"
+                    ></iconify-icon>
+                    <span class="font-medium">Get In Touch</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+                    Contact Us
+                </h1>
+                <p class="text-neutral-400 max-w-2xl mx-auto">
+                    Have questions, feedback, or suggestions? We'd love to hear
+                    from you!
+                </p>
+            </div>
+
+            <!-- Contact Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Contact Info Card -->
+                <div
+                    class="p-8 rounded-2xl bg-gradient-to-br from-surface via-surface to-emerald-950/20 border border-emerald-500/20"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-6 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:info"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        Contact Information
+                    </h2>
+
+                    <div class="space-y-6">
+                        <!-- Email -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0"
+                            >
+                                <iconify-icon
+                                    icon="lucide:mail"
+                                    width="20"
+                                    class="text-emerald-400"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-medium mb-1">
+                                    Email
+                                </h3>
+                                <a
+                                    href="mailto:blog.boopul@gmail.com"
+                                    class="text-emerald-400 hover:text-emerald-300 transition-colors"
+                                >
+                                    blog.boopul@gmail.com
+                                </a>
+                                <p class="text-neutral-500 text-sm mt-1">
+                                    We typically respond within 24-48 hours
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Website -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0"
+                            >
+                                <iconify-icon
+                                    icon="lucide:globe"
+                                    width="20"
+                                    class="text-emerald-400"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-medium mb-1">
+                                    Website
+                                </h3>
+                                <a
+                                    href="https://freepromptbase.com"
+                                    class="text-emerald-400 hover:text-emerald-300 transition-colors"
+                                >
+                                    freepromptbase.com
+                                </a>
+                                <p class="text-neutral-500 text-sm mt-1">
+                                    Your go-to source for AI prompts
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="mt-8 pt-6 border-t border-border">
+                        <h3 class="text-white font-medium mb-4">Follow Us</h3>
+                        <div class="flex gap-3">
+                            <a
+                                href="#"
+                                class="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center text-neutral-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-colors"
+                                aria-label="Twitter"
+                            >
+                                <iconify-icon icon="lucide:twitter" width="18"
+                                ></iconify-icon>
+                            </a>
+                            <a
+                                href="#"
+                                class="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center text-neutral-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-colors"
+                                aria-label="GitHub"
+                            >
+                                <iconify-icon icon="lucide:github" width="18"
+                                ></iconify-icon>
+                            </a>
+                            <a
+                                href="#"
+                                class="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center text-neutral-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-colors"
+                                aria-label="LinkedIn"
+                            >
+                                <iconify-icon icon="lucide:linkedin" width="18"
+                                ></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="p-8 rounded-2xl bg-surface border border-border">
+                    <h2
+                        class="text-xl font-semibold text-white mb-6 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:send"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        Send a Message
+                    </h2>
+
+                    <form
+                        class="space-y-5"
+                        action={`mailto:blog.boopul@gmail.com`}
+                        method="GET"
+                        enctype="text/plain"
+                    >
+                        <!-- Name -->
+                        <div>
+                            <label
+                                for="name"
+                                class="block text-sm font-medium text-neutral-300 mb-2"
+                                >Name</label
+                            >
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Your name"
+                                class="w-full px-4 py-3 rounded-xl bg-background border border-border text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-colors"
+                            />
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label
+                                for="email"
+                                class="block text-sm font-medium text-neutral-300 mb-2"
+                                >Email</label
+                            >
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="your@email.com"
+                                class="w-full px-4 py-3 rounded-xl bg-background border border-border text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-colors"
+                            />
+                        </div>
+
+                        <!-- Subject -->
+                        <div>
+                            <label
+                                for="subject"
+                                class="block text-sm font-medium text-neutral-300 mb-2"
+                                >Subject</label
+                            >
+                            <select
+                                id="subject"
+                                name="subject"
+                                class="w-full px-4 py-3 rounded-xl bg-background border border-border text-white focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-colors"
+                            >
+                                <option value="general">General Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="support">Support</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label
+                                for="body"
+                                class="block text-sm font-medium text-neutral-300 mb-2"
+                                >Message</label
+                            >
+                            <textarea
+                                id="body"
+                                name="body"
+                                rows="5"
+                                placeholder="Tell us what's on your mind..."
+                                class="w-full px-4 py-3 rounded-xl bg-background border border-border text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-colors resize-none"
+                            ></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button
+                            type="submit"
+                            class="w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-emerald-400 hover:to-emerald-500 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2"
+                        >
+                            <iconify-icon icon="lucide:send" width="18"
+                            ></iconify-icon>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="p-8 rounded-2xl bg-surface border border-border">
+                <h2
+                    class="text-xl font-semibold text-white mb-6 flex items-center gap-3"
+                >
+                    <iconify-icon
+                        icon="lucide:help-circle"
+                        width="20"
+                        class="text-emerald-400"></iconify-icon>
+                    Frequently Asked Questions
+                </h2>
+
+                <div class="space-y-4">
+                    <div
+                        class="p-4 rounded-xl bg-background border border-border"
+                    >
+                        <h3 class="text-white font-medium mb-2">
+                            How can I submit a prompt?
+                        </h3>
+                        <p class="text-neutral-400 text-sm">
+                            You can submit your prompts using the "Submit"
+                            button in our navigation. We review all submissions
+                            to ensure quality.
+                        </p>
+                    </div>
+
+                    <div
+                        class="p-4 rounded-xl bg-background border border-border"
+                    >
+                        <h3 class="text-white font-medium mb-2">
+                            Are the prompts free to use?
+                        </h3>
+                        <p class="text-neutral-400 text-sm">
+                            Yes! All prompts on FreePromptBase are free to use
+                            for personal and commercial projects.
+                        </p>
+                    </div>
+
+                    <div
+                        class="p-4 rounded-xl bg-background border border-border"
+                    >
+                        <h3 class="text-white font-medium mb-2">
+                            How do I report an issue with a prompt?
+                        </h3>
+                        <p class="text-neutral-400 text-sm">
+                            Please send us an email with details about the
+                            prompt and the issue you're experiencing. We'll look
+                            into it promptly.
+                        </p>
+                    </div>
+
+                    <div
+                        class="p-4 rounded-xl bg-background border border-border"
+                    >
+                        <h3 class="text-white font-medium mb-2">
+                            Can I request a specific type of prompt?
+                        </h3>
+                        <p class="text-neutral-400 text-sm">
+                            Absolutely! Send us your prompt requests and we'll
+                            do our best to add them to our collection.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Background Elements -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div
+            class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-emerald-500/10 via-emerald-600/5 to-transparent rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-emerald-500/5 to-transparent rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"
+        >
+        </div>
+    </div>
+</BaseLayout>

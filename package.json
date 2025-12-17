@@ -1,0 +1,27 @@
+{
+  "name": "proper-pegasi",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.12",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/vercel": "^9.0.2",
+    "@supabase/supabase-js": "^2.86.2",
+    "@tailwindcss/vite": "^4.1.17",
+    "@vercel/analytics": "^1.6.1",
+    "astro": "^5.16.4",
+    "lucide-react": "^0.555.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "sharp": "^0.34.3",
+    "tailwindcss": "^4.1.17"
+  }
+}

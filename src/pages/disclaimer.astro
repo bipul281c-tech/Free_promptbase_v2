@@ -1,0 +1,365 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<BaseLayout
+    title="Disclaimer - FreePromptBase"
+    description="Important disclaimers regarding the use of FreePromptBase and its content."
+>
+    <div class="min-h-[calc(100vh-200px)] px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+                <div
+                    class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm"
+                >
+                    <iconify-icon icon="lucide:alert-circle" width="16"
+                    ></iconify-icon>
+                    <span class="font-medium">Important Notice</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+                    Disclaimer
+                </h1>
+                <p class="text-neutral-400 max-w-2xl mx-auto">
+                    Last updated: December 2024
+                </p>
+            </div>
+
+            <!-- Content -->
+            <div class="space-y-8">
+                <!-- General Disclaimer -->
+                <section
+                    class="p-6 rounded-2xl bg-surface border border-border"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:info"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        General Disclaimer
+                    </h2>
+                    <div class="space-y-4 text-neutral-300 leading-relaxed">
+                        <p>
+                            The information provided on {SITE_TITLE} is for general
+                            informational purposes only. All information on the site
+                            is provided in good faith, however, we make no representation
+                            or warranty of any kind, express or implied, regarding
+                            the accuracy, adequacy, validity, reliability, availability,
+                            or completeness of any information on the site.
+                        </p>
+                        <p>
+                            Under no circumstance shall we have any liability to
+                            you for any loss or damage of any kind incurred as a
+                            result of the use of the site or reliance on any
+                            information provided on the site. Your use of the
+                            site and your reliance on any information on the
+                            site is solely at your own risk.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- AI-Generated Content -->
+                <section
+                    class="p-6 rounded-2xl bg-surface border border-border"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:bot"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        AI-Generated Content Notice
+                    </h2>
+                    <div class="space-y-4 text-neutral-300 leading-relaxed">
+                        <p>
+                            The prompts and AI-generated outputs featured on {
+                                SITE_TITLE
+                            } are created using various artificial intelligence tools
+                            and platforms. These AI systems, while sophisticated,
+                            may sometimes produce content that is:
+                        </p>
+                        <ul class="space-y-2 pl-4">
+                            <li class="flex items-start gap-3">
+                                <iconify-icon
+                                    icon="lucide:alert-triangle"
+                                    width="16"
+                                    class="text-amber-400 mt-1 flex-shrink-0"
+                                ></iconify-icon>
+                                <span>Inaccurate or factually incorrect</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon
+                                    icon="lucide:alert-triangle"
+                                    width="16"
+                                    class="text-amber-400 mt-1 flex-shrink-0"
+                                ></iconify-icon>
+                                <span>Biased or one-sided</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon
+                                    icon="lucide:alert-triangle"
+                                    width="16"
+                                    class="text-amber-400 mt-1 flex-shrink-0"
+                                ></iconify-icon>
+                                <span
+                                    >Not suitable for all purposes or contexts</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon
+                                    icon="lucide:alert-triangle"
+                                    width="16"
+                                    class="text-amber-400 mt-1 flex-shrink-0"
+                                ></iconify-icon>
+                                <span
+                                    >Outdated due to the AI's training data
+                                    cutoff</span
+                                >
+                            </li>
+                        </ul>
+                        <p>
+                            We encourage users to verify any important
+                            information independently and use their own judgment
+                            when applying AI-generated content.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Prompts Disclaimer -->
+                <section
+                    class="p-6 rounded-2xl bg-surface border border-border"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:message-square"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        Prompts Disclaimer
+                    </h2>
+                    <div class="space-y-4 text-neutral-300 leading-relaxed">
+                        <p>
+                            The prompts provided on {SITE_TITLE} are shared for educational
+                            and inspirational purposes. Results may vary depending
+                            on:
+                        </p>
+                        <ul class="space-y-2 pl-4">
+                            <li class="flex items-start gap-3">
+                                <iconify-icon
+                                    icon="lucide:check"
+                                    width="16"
+                                    class="text-emerald-400 mt-1 flex-shrink-0"
+                                ></iconify-icon>
+                                <span>The AI model or platform being used</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon
+                                    icon="lucide:check"
+                                    width="16"
+                                    class="text-emerald-400 mt-1 flex-shrink-0"
+                                ></iconify-icon>
+                                <span>The version of the AI model</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon
+                                    icon="lucide:check"
+                                    width="16"
+                                    class="text-emerald-400 mt-1 flex-shrink-0"
+                                ></iconify-icon>
+                                <span>User modifications to the prompts</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon
+                                    icon="lucide:check"
+                                    width="16"
+                                    class="text-emerald-400 mt-1 flex-shrink-0"
+                                ></iconify-icon>
+                                <span>Platform settings and configurations</span
+                                >
+                            </li>
+                        </ul>
+                        <p>
+                            We do not guarantee that the prompts will produce
+                            identical or similar results for all users.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- External Links -->
+                <section
+                    class="p-6 rounded-2xl bg-surface border border-border"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:external-link"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        External Links Disclaimer
+                    </h2>
+                    <p class="text-neutral-300 leading-relaxed">
+                        The site may contain (or you may be sent through the
+                        site) links to other websites or content belonging to or
+                        originating from third parties or links to websites and
+                        features in banners or other advertising. Such external
+                        links are not investigated, monitored, or checked for
+                        accuracy, adequacy, validity, reliability, availability,
+                        or completeness by us. We do not warrant, endorse,
+                        guarantee, or assume responsibility for the accuracy or
+                        reliability of any information offered by third-party
+                        websites linked through the site.
+                    </p>
+                </section>
+
+                <!-- Professional Advice -->
+                <section
+                    class="p-6 rounded-2xl bg-surface border border-border"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:briefcase"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        Professional Advice Disclaimer
+                    </h2>
+                    <p class="text-neutral-300 leading-relaxed">
+                        The site cannot and does not contain professional
+                        advice. The information is provided for general
+                        informational and educational purposes only and is not a
+                        substitute for professional advice. Accordingly, before
+                        taking any actions based upon such information, we
+                        encourage you to consult with the appropriate
+                        professionals. We do not provide any kind of
+                        professional advice. The use or reliance of any
+                        information contained on the site is solely at your own
+                        risk.
+                    </p>
+                </section>
+
+                <!-- Affiliate Disclosure -->
+                <section
+                    class="p-6 rounded-2xl bg-surface border border-border"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:dollar-sign"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        Affiliate & Advertising Disclosure
+                    </h2>
+                    <div class="space-y-4 text-neutral-300 leading-relaxed">
+                        <p>
+                            This site may contain third-party advertisements and
+                            links to third-party sites. {SITE_TITLE} does not make
+                            any representation as to the accuracy or suitability
+                            of any of the information contained in those advertisements
+                            or sites.
+                        </p>
+                        <p>
+                            In the future, {SITE_TITLE} may become a participant
+                            in affiliate marketing programs. If we do, we may earn
+                            commissions on qualifying purchases made through links
+                            on our website. Such relationships will always be disclosed.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- User-Generated Content -->
+                <section
+                    class="p-6 rounded-2xl bg-surface border border-border"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:users"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        User-Generated Content
+                    </h2>
+                    <p class="text-neutral-300 leading-relaxed">
+                        Some content on {SITE_TITLE} may be submitted by users. We
+                        do not guarantee the accuracy, quality, or appropriateness
+                        of user-submitted prompts or content. While we strive to
+                        review and moderate submissions, we cannot be held responsible
+                        for any issues arising from user-generated content.
+                    </p>
+                </section>
+
+                <!-- Changes to Disclaimer -->
+                <section
+                    class="p-6 rounded-2xl bg-surface border border-border"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:refresh-cw"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        Changes to This Disclaimer
+                    </h2>
+                    <p class="text-neutral-300 leading-relaxed">
+                        We reserve the right to modify this disclaimer at any
+                        time. Changes take effect immediately upon posting. Your
+                        continued use of the site after any changes indicates
+                        your acceptance of the modified disclaimer.
+                    </p>
+                </section>
+
+                <!-- Contact Us -->
+                <section
+                    class="p-6 rounded-2xl bg-gradient-to-br from-surface via-surface to-emerald-950/20 border border-emerald-500/20"
+                >
+                    <h2
+                        class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+                    >
+                        <iconify-icon
+                            icon="lucide:mail"
+                            width="20"
+                            class="text-emerald-400"></iconify-icon>
+                        Questions?
+                    </h2>
+                    <p class="text-neutral-300 leading-relaxed mb-4">
+                        If you have any questions about this Disclaimer, please
+                        contact us:
+                    </p>
+                    <a
+                        href="mailto:blog.boopul@gmail.com"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                    >
+                        <iconify-icon icon="lucide:mail" width="16"
+                        ></iconify-icon>
+                        <span>blog.boopul@gmail.com</span>
+                    </a>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Background Elements -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div
+            class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-emerald-500/10 via-emerald-600/5 to-transparent rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-emerald-500/5 to-transparent rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"
+        >
+        </div>
+    </div>
+</BaseLayout>

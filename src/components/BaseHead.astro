@@ -1,0 +1,147 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import "../styles/global.css";
+import type { ImageMetadata } from "astro";
+import FallbackImage from "../assets/blog-placeholder-1.jpg";
+import { SITE_TITLE } from "../consts";
+
+interface Props {
+	title: string;
+	description: string;
+	image?: ImageMetadata | string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { title, description, image = "/og-image.png" } = Astro.props;
+const imageSrc = typeof image === "string" ? image : image.src;
+const imageURL = new URL(imageSrc, Astro.url);
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title={SITE_TITLE}
+	href={new URL("rss.xml", Astro.site)}
+/>
+<meta name="generator" content={Astro.generator} />
+
+<!-- Google Verification & Monetization -->
+<meta
+	name="google-site-verification"
+	content="Kwixb4_W335SRst1i80tZp-VzgBmBizhUO1WXYV5RH4"
+/>
+<meta name="google-adsense-account" content="ca-pub-7803867089582138" />
+<meta name="monetag" content="ed656d752ebff69775306766db127896" />
+
+<!-- Theme initialization - runs before page renders to prevent flash -->
+<script is:inline>
+	(function () {
+		const savedTheme = localStorage.getItem("theme");
+		const prefersDark = window.matchMedia(
+			"(prefers-color-scheme: dark)",
+		).matches;
+		const theme = savedTheme || (prefersDark ? "dark" : "dark");
+		document.documentElement.setAttribute("data-theme", theme);
+	})();
+</script>
+
+<!-- Font preloads -->
+<link
+	rel="preload"
+	href="/fonts/atkinson-regular.woff"
+	as="font"
+	type="font/woff"
+	crossorigin
+/>
+<link
+	rel="preload"
+	href="/fonts/atkinson-bold.woff"
+	as="font"
+	type="font/woff"
+	crossorigin
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageURL} />
+<meta property="og:site_name" content={SITE_TITLE} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageURL} />
+<!-- Schema.org WebSite -->
+<script
+	type="application/ld+json"
+	set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		name: SITE_TITLE,
+		url: Astro.site,
+		description: description,
+		potentialAction: {
+			"@type": "SearchAction",
+			target: new URL(
+				"search?q={search_term_string}",
+				Astro.site,
+			).toString(),
+			"query-input": "required name=search_term_string",
+		},
+	})}
+/>
+
+<!-- Google Analytics with Consent Mode -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP5BGQCVHM"
+></script>
+<script is:inline>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag("js", new Date());
+
+	// Initialize with consent mode
+	gtag("consent", "default", {
+		analytics_storage: "denied",
+		ad_storage: "denied",
+		ad_user_data: "denied",
+		ad_personalization: "denied",
+		wait_for_update: 500,
+	});
+
+	gtag("config", "G-CP5BGQCVHM", {
+		anonymize_ip: true,
+	});
+
+	// Apply saved preferences if they exist
+	const savedConsent = localStorage.getItem("cookie-consent");
+	if (savedConsent) {
+		const preferences = JSON.parse(savedConsent);
+		gtag("consent", "update", {
+			analytics_storage: preferences.analytics ? "granted" : "denied",
+			ad_storage: preferences.advertising ? "granted" : "denied",
+			ad_user_data: preferences.advertising ? "granted" : "denied",
+			ad_personalization: preferences.advertising ? "granted" : "denied",
+		});
+	}
+</script>

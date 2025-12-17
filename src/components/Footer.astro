@@ -1,0 +1,152 @@
+---
+import { SITE_TITLE } from "../consts";
+const today = new Date();
+---
+
+<footer class="border-t border-border bg-background py-10">
+	<div
+		class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8"
+	>
+		<div class="space-y-4 w-full md:w-auto">
+			<div class="flex items-center gap-2">
+				<iconify-icon
+					icon="lucide:sparkles"
+					width="16"
+					class="text-white"></iconify-icon>
+				<span class="text-sm font-bold tracking-tight text-white"
+					>{SITE_TITLE}</span
+				>
+			</div>
+			<p class="text-[11px] text-neutral-500 max-w-xs">
+				The open-source library for the world's best AI prompts. <br
+				/>Built for the community, by the community.
+			</p>
+		</div>
+
+		<div
+			class="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 w-full md:w-auto"
+		>
+			<div class="space-y-3">
+				<h3
+					class="text-[11px] font-medium text-white uppercase tracking-wider"
+				>
+					Platform
+				</h3>
+				<ul class="space-y-2">
+					<li>
+						<a
+							href="/"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>Browse</a
+						>
+					</li>
+					<li>
+						<a
+							href="/categories"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>Categories</a
+						>
+					</li>
+					<li>
+						<a
+							href="/blog"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>Blog</a
+						>
+					</li>
+				</ul>
+			</div>
+			<div class="space-y-3">
+				<h3
+					class="text-[11px] font-medium text-white uppercase tracking-wider"
+				>
+					Company
+				</h3>
+				<ul class="space-y-2">
+					<li>
+						<a
+							href="/about"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>About Us</a
+						>
+					</li>
+					<li>
+						<a
+							href="/contact"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>Contact</a
+						>
+					</li>
+				</ul>
+			</div>
+			<div class="space-y-3">
+				<h3
+					class="text-[11px] font-medium text-white uppercase tracking-wider"
+				>
+					Legal
+				</h3>
+				<ul class="space-y-2">
+					<li>
+						<a
+							href="/privacy"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>Privacy Policy</a
+						>
+					</li>
+					<li>
+						<a
+							href="/terms"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>Terms of Service</a
+						>
+					</li>
+					<li>
+						<a
+							href="/disclaimer"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>Disclaimer</a
+						>
+					</li>
+				</ul>
+			</div>
+			<div class="space-y-3">
+				<h3
+					class="text-[11px] font-medium text-white uppercase tracking-wider"
+				>
+					Connect
+				</h3>
+				<ul class="space-y-2">
+					<li>
+						<a
+							href="mailto:blog.boopul@gmail.com"
+							class="text-[11px] text-neutral-500 hover:text-white transition-colors"
+							>Email Us</a
+						>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div
+		class="max-w-7xl mx-auto px-4 sm:px-6 mt-12 pt-8 border-t border-border flex items-center justify-between"
+	>
+		<span class="text-[10px] text-neutral-600"
+			>&copy; {today.getFullYear()}
+			{SITE_TITLE}. All rights reserved.</span
+		>
+		<div class="flex gap-4">
+			<a
+				href="#"
+				class="text-neutral-600 hover:text-white transition-colors"
+				><iconify-icon icon="lucide:github" width="14"
+				></iconify-icon></a
+			>
+			<a
+				href="#"
+				class="text-neutral-600 hover:text-white transition-colors"
+				><iconify-icon icon="lucide:twitter" width="14"
+				></iconify-icon></a
+			>
+		</div>
+	</div>
+</footer>

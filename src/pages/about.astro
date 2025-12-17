@@ -1,0 +1,287 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<BaseLayout
+	title="About Us - FreePromptBase"
+	description="Learn about FreePromptBase - your open-source library for the world's best AI prompts."
+>
+	<div class="min-h-[calc(100vh-200px)] px-4 py-12">
+		<div class="max-w-4xl mx-auto">
+			<!-- Header Section -->
+			<div class="text-center mb-12">
+				<div
+					class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm"
+				>
+					<iconify-icon icon="lucide:sparkles" width="16"
+					></iconify-icon>
+					<span class="font-medium">Our Story</span>
+				</div>
+				<h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+					About {SITE_TITLE}
+				</h1>
+				<p class="text-neutral-400 max-w-2xl mx-auto text-lg">
+					Your open-source library for the world's best AI prompts
+				</p>
+			</div>
+
+			<!-- Mission Section -->
+			<div
+				class="mb-12 p-8 rounded-2xl bg-gradient-to-br from-surface via-surface to-emerald-950/20 border border-emerald-500/20"
+			>
+				<div class="flex items-center gap-3 mb-4">
+					<div
+						class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center"
+					>
+						<iconify-icon
+							icon="lucide:target"
+							width="24"
+							class="text-emerald-400"></iconify-icon>
+					</div>
+					<h2 class="text-2xl font-bold text-white">Our Mission</h2>
+				</div>
+				<p class="text-neutral-300 leading-relaxed text-lg">
+					At {SITE_TITLE}, we believe that great AI prompts should be
+					accessible to everyone. Our mission is to build the largest
+					open-source collection of high-quality prompts for AI tools
+					like Midjourney, ChatGPT, Stable Diffusion, DALL-E, and more
+					— completely free.
+				</p>
+			</div>
+
+			<!-- What We Offer -->
+			<div class="mb-12">
+				<h2
+					class="text-2xl font-bold text-white mb-6 flex items-center gap-3"
+				>
+					<iconify-icon
+						icon="lucide:package"
+						width="24"
+						class="text-emerald-400"></iconify-icon>
+					What We Offer
+				</h2>
+				<div class="grid sm:grid-cols-2 gap-4">
+					<div
+						class="p-6 rounded-2xl bg-surface border border-border"
+					>
+						<div
+							class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4"
+						>
+							<iconify-icon
+								icon="lucide:image"
+								width="20"
+								class="text-emerald-400"></iconify-icon>
+						</div>
+						<h3 class="text-white font-semibold mb-2">
+							Image Generation
+						</h3>
+						<p class="text-neutral-400 text-sm">
+							Curated prompts for Midjourney, DALL-E, Stable
+							Diffusion, and other image AI tools.
+						</p>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-surface border border-border"
+					>
+						<div
+							class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4"
+						>
+							<iconify-icon
+								icon="lucide:message-square"
+								width="20"
+								class="text-emerald-400"></iconify-icon>
+						</div>
+						<h3 class="text-white font-semibold mb-2">
+							Chat & Text
+						</h3>
+						<p class="text-neutral-400 text-sm">
+							Powerful prompts for ChatGPT, Claude, and other
+							conversational AI models.
+						</p>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-surface border border-border"
+					>
+						<div
+							class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4"
+						>
+							<iconify-icon
+								icon="lucide:code"
+								width="20"
+								class="text-emerald-400"></iconify-icon>
+						</div>
+						<h3 class="text-white font-semibold mb-2">
+							Coding Prompts
+						</h3>
+						<p class="text-neutral-400 text-sm">
+							Developer-focused prompts for code generation,
+							debugging, and optimization.
+						</p>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-surface border border-border"
+					>
+						<div
+							class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4"
+						>
+							<iconify-icon
+								icon="lucide:pen-tool"
+								width="20"
+								class="text-emerald-400"></iconify-icon>
+						</div>
+						<h3 class="text-white font-semibold mb-2">
+							Creative Writing
+						</h3>
+						<p class="text-neutral-400 text-sm">
+							Prompts for storytelling, content creation,
+							marketing copy, and more.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Why Free? -->
+			<div class="mb-12 p-6 rounded-2xl bg-surface border border-border">
+				<h2
+					class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+				>
+					<iconify-icon
+						icon="lucide:heart"
+						width="20"
+						class="text-emerald-400"></iconify-icon>
+					Why Free?
+				</h2>
+				<p class="text-neutral-300 leading-relaxed">
+					We believe in democratizing access to AI. While prompt
+					marketplaces charge for every download, we provide the same
+					quality content at no cost. Our community-driven approach
+					means more people can benefit from AI tools, regardless of
+					their budget. We sustain our platform through non-intrusive
+					advertising and the generous support of our community.
+				</p>
+			</div>
+
+			<!-- Community -->
+			<div class="mb-12 p-6 rounded-2xl bg-surface border border-border">
+				<h2
+					class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+				>
+					<iconify-icon
+						icon="lucide:users"
+						width="20"
+						class="text-emerald-400"></iconify-icon>
+					Built by the Community
+				</h2>
+				<p class="text-neutral-300 leading-relaxed mb-4">
+					{SITE_TITLE} is more than just a prompt library — it's a community.
+					We welcome contributions from prompt engineers, AI enthusiasts,
+					and creators worldwide. Whether you've crafted the perfect Midjourney
+					prompt or developed a useful ChatGPT workflow, we'd love to feature
+					your work.
+				</p>
+				<a
+					href="/"
+					class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+				>
+					<iconify-icon icon="lucide:upload" width="16"
+					></iconify-icon>
+					<span>Submit Your Prompts</span>
+				</a>
+			</div>
+
+			<!-- Stats -->
+			<div class="mb-12">
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+					<div
+						class="p-6 rounded-2xl bg-surface border border-border text-center"
+					>
+						<div class="text-3xl font-bold text-emerald-400 mb-1">
+							100+
+						</div>
+						<div class="text-neutral-400 text-sm">
+							Curated Prompts
+						</div>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-surface border border-border text-center"
+					>
+						<div class="text-3xl font-bold text-emerald-400 mb-1">
+							10+
+						</div>
+						<div class="text-neutral-400 text-sm">Categories</div>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-surface border border-border text-center"
+					>
+						<div class="text-3xl font-bold text-emerald-400 mb-1">
+							Free
+						</div>
+						<div class="text-neutral-400 text-sm">Always</div>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-surface border border-border text-center"
+					>
+						<div class="text-3xl font-bold text-emerald-400 mb-1">
+							5+
+						</div>
+						<div class="text-neutral-400 text-sm">AI Platforms</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Contact Section -->
+			<div
+				class="p-6 rounded-2xl bg-gradient-to-br from-surface via-surface to-emerald-950/20 border border-emerald-500/20"
+			>
+				<h2
+					class="text-xl font-semibold text-white mb-4 flex items-center gap-3"
+				>
+					<iconify-icon
+						icon="lucide:mail"
+						width="20"
+						class="text-emerald-400"></iconify-icon>
+					Get in Touch
+				</h2>
+				<p class="text-neutral-300 leading-relaxed mb-4">
+					Have questions, suggestions, or want to collaborate? We'd
+					love to hear from you!
+				</p>
+				<div class="flex flex-wrap gap-3">
+					<a
+						href="mailto:blog.boopul@gmail.com"
+						class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+					>
+						<iconify-icon icon="lucide:mail" width="16"
+						></iconify-icon>
+						<span>blog.boopul@gmail.com</span>
+					</a>
+					<a
+						href="/contact"
+						class="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-lg text-white hover:border-emerald-500/30 transition-colors"
+					>
+						<iconify-icon icon="lucide:message-circle" width="16"
+						></iconify-icon>
+						<span>Contact Page</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Decorative Background Elements -->
+	<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+		<div
+			class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-emerald-500/10 via-emerald-600/5 to-transparent rounded-full blur-3xl"
+		>
+		</div>
+		<div
+			class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-emerald-500/5 to-transparent rounded-full blur-3xl"
+		>
+		</div>
+		<div
+			class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"
+		>
+		</div>
+	</div>
+</BaseLayout>

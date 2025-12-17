@@ -1,0 +1,268 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<BaseLayout
+    title="404 - Page Not Found"
+    description="The page you're looking for doesn't exist"
+>
+    <div
+        class="min-h-[calc(100vh-200px)] flex items-center justify-center px-4 py-12"
+    >
+        <div class="text-center max-w-2xl w-full">
+            <!-- Announcement Banner -->
+            <div
+                class="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm animate-glow"
+            >
+                <iconify-icon
+                    icon="lucide:sparkles"
+                    width="16"
+                    class="animate-spin-slow"></iconify-icon>
+                <span class="font-medium">We've Updated Our Site!</span>
+                <iconify-icon
+                    icon="lucide:sparkles"
+                    width="16"
+                    class="animate-spin-slow"></iconify-icon>
+            </div>
+
+            <!-- 404 Icon -->
+            <div class="mb-6 flex justify-center">
+                <div
+                    class="w-24 h-24 rounded-3xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600 flex items-center justify-center shadow-2xl shadow-emerald-500/40 icon-container"
+                >
+                    <iconify-icon
+                        icon="lucide:compass"
+                        width="48"
+                        height="48"
+                        class="text-white compass-icon"></iconify-icon>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+                Looks Like You're Lost
+            </h1>
+
+            <!-- Description -->
+            <p
+                class="text-neutral-400 mb-8 text-base sm:text-lg leading-relaxed max-w-md mx-auto"
+            >
+                This page has moved or doesn't exist anymore. But don't worry —
+                we've got something even better for you!
+            </p>
+
+            <!-- Highlight Message -->
+            <div
+                class="mb-10 p-6 rounded-2xl bg-gradient-to-br from-surface via-surface to-emerald-950/20 border border-emerald-500/20 relative overflow-hidden"
+            >
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-emerald-500/5"
+                >
+                </div>
+                <div class="relative">
+                    <div
+                        class="flex items-center justify-center gap-2 text-emerald-400 mb-3"
+                    >
+                        <iconify-icon icon="lucide:rocket" width="20"
+                        ></iconify-icon>
+                        <span
+                            class="font-semibold text-sm uppercase tracking-wider"
+                            >What's New</span
+                        >
+                    </div>
+                    <p class="text-white text-lg sm:text-xl font-medium mb-2">
+                        Discover High-Quality AI Prompts
+                    </p>
+                    <p class="text-neutral-400 text-sm sm:text-base">
+                        We've curated the best prompts for you. Head to our
+                        homepage to explore our premium collection!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-4 p-4"
+            >
+                <a
+                    href="/"
+                    class="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-xl hover:from-emerald-400 hover:to-emerald-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                    <iconify-icon icon="lucide:sparkles" width="20"
+                    ></iconify-icon>
+                    <span>Explore Prompts</span>
+                    <iconify-icon
+                        icon="lucide:arrow-right"
+                        width="20"
+                        class="group-hover:translate-x-1 transition-transform"
+                    ></iconify-icon>
+                </a>
+                <a
+                    href="/categories"
+                    class="inline-flex items-center gap-3 px-6 py-4 bg-surface border border-border text-white font-semibold rounded-xl hover:bg-neutral-800 hover:border-neutral-600 transition-all duration-300"
+                >
+                    <iconify-icon icon="lucide:layout-grid" width="18"
+                    ></iconify-icon>
+                    <span>Browse Categories</span>
+                </a>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="mt-14 pt-8 border-t border-border/50">
+                <p class="text-neutral-500 text-sm mb-5">
+                    Or check out these popular sections:
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a
+                        href="/blog"
+                        class="px-4 py-2 rounded-lg bg-surface/50 border border-border/50 text-neutral-300 hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 flex items-center gap-2 text-sm"
+                    >
+                        <iconify-icon icon="lucide:book-open" width="14"
+                        ></iconify-icon>
+                        <span>Blog</span>
+                    </a>
+                    <a
+                        href="/about"
+                        class="px-4 py-2 rounded-lg bg-surface/50 border border-border/50 text-neutral-300 hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 flex items-center gap-2 text-sm"
+                    >
+                        <iconify-icon icon="lucide:users" width="14"
+                        ></iconify-icon>
+                        <span>About Us</span>
+                    </a>
+                    <a
+                        href="/"
+                        class="px-4 py-2 rounded-lg bg-surface/50 border border-border/50 text-neutral-300 hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 flex items-center gap-2 text-sm"
+                    >
+                        <iconify-icon icon="lucide:zap" width="14"
+                        ></iconify-icon>
+                        <span>Top Prompts</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Background Elements -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <!-- Main gradient orbs -->
+        <div
+            class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-emerald-500/10 via-emerald-600/5 to-transparent rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-emerald-500/5 to-transparent rounded-full blur-3xl"
+        >
+        </div>
+
+        <!-- Floating particles -->
+        <div
+            class="absolute top-1/4 left-1/4 w-2 h-2 bg-emerald-500/30 rounded-full animate-float"
+        >
+        </div>
+        <div
+            class="absolute top-1/3 right-1/4 w-3 h-3 bg-emerald-400/20 rounded-full animate-float-delayed"
+        >
+        </div>
+        <div
+            class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-neutral-500/30 rounded-full animate-float"
+        >
+        </div>
+
+        <!-- Grid pattern -->
+        <div
+            class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"
+        >
+        </div>
+    </div>
+
+    <style>
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float-delayed {
+            0%,
+            100% {
+                transform: translateY(0px);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(-15px);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes glow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(16, 185, 129, 0.25);
+            }
+        }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes compass-spin {
+            0%,
+            100% {
+                transform: rotate(-10deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%,
+            100% {
+                box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                box-shadow: 0 25px 60px -12px rgba(16, 185, 129, 0.6);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float-delayed 8s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .animate-glow {
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .animate-spin-slow {
+            animation: spin-slow 8s linear infinite;
+        }
+
+        .compass-icon {
+            animation: compass-spin 3s ease-in-out infinite;
+        }
+
+        .icon-container {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+    </style>
+</BaseLayout>

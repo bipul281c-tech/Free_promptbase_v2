@@ -1,0 +1,15 @@
+---
+import Hero from "../components/Hero.astro";
+import Filters from "../components/Filters.astro";
+import PromptGrid from "../components/PromptGrid.astro";
+import Newsletter from "../components/Newsletter.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<Hero />
+	<Filters />
+	<PromptGrid />
+	<Newsletter />
+</BaseLayout>

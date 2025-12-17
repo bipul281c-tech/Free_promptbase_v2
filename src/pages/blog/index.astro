@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogContainer from "../../components/BlogContainer";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout title={`Blog - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+	<div class="min-h-[calc(100vh-200px)] px-4 py-12">
+		<div class="max-w-7xl mx-auto">
+			<!-- Header Section -->
+			<div class="text-center mb-12">
+				<div
+					class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm"
+				>
+					<iconify-icon icon="lucide:book-open" width="16"
+					></iconify-icon>
+					<span class="font-medium">Explore Prompts</span>
+				</div>
+				<h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+					Blog & Prompts
+				</h1>
+				<p class="text-neutral-400 max-w-2xl mx-auto text-lg">
+					Discover our curated collection of AI prompts, tutorials,
+					and insights to supercharge your creative workflow.
+				</p>
+			</div>
+
+			<!-- Blog Content -->
+			<BlogContainer client:load initialPosts={posts} />
+		</div>
+	</div>
+
+	<!-- Decorative Background Elements -->
+	<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+		<div
+			class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-emerald-500/10 via-emerald-600/5 to-transparent rounded-full blur-3xl"
+		>
+		</div>
+		<div
+			class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-emerald-500/5 to-transparent rounded-full blur-3xl"
+		>
+		</div>
+		<div
+			class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"
+		>
+		</div>
+	</div>
+</BaseLayout>

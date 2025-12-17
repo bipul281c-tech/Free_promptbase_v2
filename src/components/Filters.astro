@@ -1,0 +1,125 @@
+---
+import { CATEGORIES } from "../categories";
+
+// Get current URL to determine active category
+const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === "/";
+const categoryMatch = currentPath.match(/^\/category\/([^/]+)/);
+const activeCategory = categoryMatch ? categoryMatch[1] : null;
+---
+
+<section
+    class="sticky top-14 z-40 bg-background/95 backdrop-blur-xl border-b border-border"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-12 flex items-center gap-2">
+        <div
+            class="flex items-center gap-2 overflow-x-auto no-scrollbar flex-1"
+        >
+            <a
+                href="/"
+                class={`whitespace-nowrap px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                    isHomePage && !activeCategory
+                        ? "bg-surface border border-neutral-700 text-white shadow-sm"
+                        : "text-secondary hover:text-white hover:bg-surface"
+                }`}
+            >
+                All Prompts
+            </a>
+            {
+                CATEGORIES.map((category) => (
+                    <a
+                        href={`/category/${category.slug}`}
+                        class={`whitespace-nowrap px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                            activeCategory === category.slug
+                                ? "bg-surface border border-neutral-700 text-white shadow-sm"
+                                : "text-secondary hover:text-white hover:bg-surface"
+                        }`}
+                    >
+                        {category.name}
+                    </a>
+                ))
+            }
+        </div>
+        <div
+            class="flex-shrink-0 flex items-center gap-2 pl-4 border-l border-border hidden sm:flex"
+        >
+            <span
+                class="text-[10px] text-neutral-500 uppercase tracking-widest font-medium"
+                >Sort by:</span
+            >
+            <div class="relative" id="sort-container">
+                <button
+                    id="sort-dropdown"
+                    class="text-xs text-white flex items-center gap-1 hover:text-neutral-300"
+                >
+                    <span id="sort-label">Newest</span>
+                    <iconify-icon icon="lucide:chevron-down" width="12"
+                    ></iconify-icon>
+                </button>
+                <div
+                    id="sort-menu"
+                    class="hidden absolute right-0 top-full mt-1 bg-surface border border-border rounded-lg shadow-lg py-1 min-w-[100px] z-50"
+                >
+                    <button
+                        data-sort="newest"
+                        class="sort-option w-full text-left px-3 py-1.5 text-xs text-white hover:bg-neutral-800 transition-colors"
+                        >Newest</button
+                    >
+                    <button
+                        data-sort="popular"
+                        class="sort-option w-full text-left px-3 py-1.5 text-xs text-neutral-400 hover:bg-neutral-800 hover:text-white transition-colors"
+                        >Popular</button
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const sortDropdown = document.getElementById("sort-dropdown");
+    const sortMenu = document.getElementById("sort-menu");
+    const sortLabel = document.getElementById("sort-label");
+    const sortOptions = document.querySelectorAll(".sort-option");
+
+    // Toggle dropdown
+    sortDropdown?.addEventListener("click", () => {
+        sortMenu?.classList.toggle("hidden");
+    });
+
+    // Close on outside click
+    document.addEventListener("click", (e) => {
+        if (
+            !document
+                .getElementById("sort-container")
+                ?.contains(e.target as Node)
+        ) {
+            sortMenu?.classList.add("hidden");
+        }
+    });
+
+    // Handle sort option click
+    sortOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+            const sortType = option.getAttribute("data-sort");
+            if (sortLabel)
+                sortLabel.textContent =
+                    sortType === "popular" ? "Popular" : "Newest";
+
+            // Update active state
+            sortOptions.forEach((opt) => {
+                opt.classList.remove("text-white");
+                opt.classList.add("text-neutral-400");
+            });
+            option.classList.remove("text-neutral-400");
+            option.classList.add("text-white");
+
+            sortMenu?.classList.add("hidden");
+
+            // Dispatch event for PromptGrid to handle
+            window.dispatchEvent(
+                new CustomEvent("sort-change", { detail: { sort: sortType } }),
+            );
+        });
+    });
+</script>
